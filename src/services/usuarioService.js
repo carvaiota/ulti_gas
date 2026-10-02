@@ -51,12 +51,17 @@ class usuarioService {
   }
   async buscarPorId(idusuario) {
     const usuarioEncontrado = await usuarioRepository.buscarPorId(idusuario);
-    return usuarioEncontrado;
+    return usuarioEncontrado
   }
 
   async buscarPorEmail(email) {
   const usuarioEncontrado = await usuarioRepository.buscarPorEmail(email);
-  return usuarioEncontrado;
+  return usuarioEncontrado
+}
+
+async AtualizarSenha(idusuario){
+  const usuarioEncontrado = await usuarioRepository.atualizaSenha(idusuario)
+  return usuarioEncontrado
 }
 }
 

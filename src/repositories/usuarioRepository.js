@@ -27,9 +27,21 @@ class usuarioRepository{
         return new usuario (dados.senha_hash,dados.idusuario, dados.email,)
     }
     //atualizar o usuario
-    async atualizar (usuario){
-        const sql = 'UPDATE usuario SET email = ?, senha_hash = ? WHERE idusuario =?'
-        const [resultado] = await pool.execute(sql,[usuario.email,usuario.senha_hash,usuario.idusuario])
+    async atualizaSenha (usuario){
+        const sql = 'UPDATE usuario SET senha_hash = ?, email =?  WHERE idusuario =? '
+        const [resultado] = await pool.execute(sql,[usuario.senha_hash,usuario.idusuario,])
+        return resultado.affectedRows > 0
+    }
+
+    async atualizaEmail (usuario){
+        const sql = 'UPDATE usuario SET, email =?  WHERE idusuario =? '
+        const [resultado] = await pool.execute(sql,[,usuario.email,usuario.idusuario,])
+        return resultado.affectedRows > 0
+    }
+
+    async atualizaEmaileSenha (usuario){
+        const sql = 'UPDATE usuario SET senha_hash = ?, email =?  WHERE idusuario =? '
+        const [resultado] = await pool.execute(sql,[usuario.senha_hash,usuario.email,usuario.idusuario,])
         return resultado.affectedRows > 0
     }
 }

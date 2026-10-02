@@ -52,6 +52,33 @@ class usuarioController {
         }
     }
 
+     async AtualizarSenha(req, res){
+        try{
+            const{senha} = req.body
+
+            if(!senha ){
+                return  res.status(400).json({
+                    message: "a senha é obrigatorio"
+                })
+            }
+            const {senhaAtualizada} = await usuarioService.AtualizarSenha(senha);            
+            return res.status(200).json({
+                message: "senha atualizada!",
+                usuario: {
+                    idusuario: usuario.idusuario,
+                    senha: usuario.senha
+                }
+                
+            })
+        
+        }
+        catch(error){
+            return res.status(401).json({message: error.message})
+        }
+    }
+
+
+
     async buscarPerfil(req, res) {
     try {
       return res.status(200).json({
