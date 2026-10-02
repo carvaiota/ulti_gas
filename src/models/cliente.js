@@ -1,4 +1,4 @@
-class cliente {
+class Cliente {
   #idcliente;
   #cpf;
   #nome;
@@ -53,4 +53,4 @@ class cliente {
   }
 }
 
-export default cliente;
+export default Cliente;
